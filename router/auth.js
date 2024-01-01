@@ -4,10 +4,10 @@ const User = require('../model/userSchema');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const authenticate = require('../middleware/authenticate');
-const baseUrl = "https://mernserver-o8ei.onrender.com"
+// const baseUrl = "https://mernserver-o8ei.onrender.com"
 
 
-router.post(`${baseUrl}/register`, async (req, res) => {
+router.post(`/register`, async (req, res) => {
     const { name, email, phone, work, password, cpassword } = req.body;
 
     if (!name || !email || !phone || !work || !password || !cpassword) {
@@ -36,7 +36,7 @@ router.post(`${baseUrl}/register`, async (req, res) => {
 
 });
 
-router.post(`${baseUrl}/signin`, async (req, res) => {
+router.post(`/signin`, async (req, res) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
@@ -69,11 +69,11 @@ router.post(`${baseUrl}/signin`, async (req, res) => {
     }
 });
 
-router.get(`${baseUrl}/about`, authenticate, (req, res) => {
+router.get(`/about`, authenticate, (req, res) => {
     res.send(req.rootUser);
 });
 
-router.get(`${baseUrl}/logout`, (req, res) => {
+router.get(`/logout`, (req, res) => {
     res.clearCookie('jwtoken', { path: '/' });
     res.status(200).send('Ram Ram');
 });
