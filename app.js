@@ -6,7 +6,7 @@ const cors = require('cors');
 
 app.use(
     cors({
-        origin: 'https://mernserver-o8ei.onrender.com',
+        origin: 'https://mern.sumitraut.in',
         credentials: true
     }));
 
